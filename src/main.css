@@ -1,3 +1,43 @@
+.infinite-horizontal {
+  animation-name: infiniteHorizontal;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
 
+@keyframes infiniteHorizontal {
+  0% {
+    translate: 0rem;
+  }
+  50% {
+    translate: -0.5rem;
+  }
+  100% {
+    translate: 0rem;
+  }
+}
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1rem;
+  bottom: 0.4rem;
+  left: 0;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 250ms ease-out;
+}
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.hover-underline:focus-visible {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -17,7 +17,7 @@ export const useToDoList = defineStore('toDoList', () => {
       Id sunt facere dolore rerum error atque nemo nam ut officia ex, saepe facilis deserunt fugiat beatae quo vel quod natus magni debitis autem iste qui aut a? Veritatis, architecto?`,
       start_date: '04/05/2023',
       finish_date: '13/05/2023',
-      state: 'In progress'
+      currentState: 'Complete'
     },
     {
       id: '2',
@@ -29,7 +29,7 @@ export const useToDoList = defineStore('toDoList', () => {
       Suscipit ullam odit quam dolores aliquid dolorem libero magni? Consequatur quas culpa magni quidem ut quisquam repellat assumenda sed totam repellendus, itaque possimus illum dolorem libero ab, porro, ipsam eveniet!`,
       start_date: '08/06/2023',
       finish_date: '15/07/2023',
-      state: 'Paused'
+      currentState: 'Complete'
     },
     {
       id: '3',
@@ -41,7 +41,7 @@ export const useToDoList = defineStore('toDoList', () => {
       Obcaecati quod possimus iure error minima quidem vel dignissimos animi necessitatibus ipsa facilis quis consequatur, voluptatibus ea tenetur, commodi similique itaque, debitis aliquam nulla eum ullam et eos aspernatur! Nesciunt.`,
       start_date: '12/04/2023',
       finish_date: '28/08/2023',
-      state: 'Blocked'
+      currentState: 'Blocked'
     },
     {
       id: '4',
@@ -53,7 +53,7 @@ export const useToDoList = defineStore('toDoList', () => {
       Libero dolore suscipit, ipsam magnam nostrum laboriosam expedita aperiam id eos sint repudiandae provident voluptatem perferendis repellendus? Maxime veniam voluptas perspiciatis pariatur nisi repellat commodi, vel tenetur eligendi magnam ipsam.`,
       start_date: '24/04/2023',
       finish_date: '28/04/2023',
-      state: 'In progress'
+      currentState: 'In progress'
     },
     {
       id: '5',
@@ -62,11 +62,28 @@ export const useToDoList = defineStore('toDoList', () => {
       Quos, et? Voluptates nulla aperiam ea voluptatum rerum accusamus perspiciatis corporis, iste autem sunt quos debitis eius blanditiis fugiat nostrum veniam laboriosam, excepturi sed! Earum quo temporibus dicta eum magni.`,
       start_date: '11/05/2023',
       finish_date: '17/05/2023',
-      state: 'Finished'
+      currentState: 'Complete'
     }
   ])
 
-  const addToDo = (toDo) => {
+  const addToDo = (title, description, start_date, finish_date, currentState) => {
+    const toDo = {
+      id: 'x',
+      title,
+      description,
+      start_date,
+      finish_date,
+      state: {
+        currentState,
+        states: [
+          'Blocked',
+          'Paused',
+          'To do',
+          'In progress',
+          'Complete',
+        ]
+      }
+    }
     toDoList.value.push(toDo)
   }
 
